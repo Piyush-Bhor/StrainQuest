@@ -1,0 +1,82 @@
+<%- include('includes/header.ejs') %>
+
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= strain_name[0] %></h5>
+              <p class="card-text"><%= strain_effects[0] %>
+                <ul class="list-group">
+                    <li class="list-group-item">THC: <%= strain_thc %>%</li>
+                    <li class="list-group-item">CBD: <%= strain_cbd %>%</li>
+                    <li class="list-group-item">Type: <%= strain_type %></li>
+                    <li class="list-group-item">Effects: <%= strain_effects %></li>
+                  </ul>
+            </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<%= strain_image[1] %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= strain_name[1] %></h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="<%= strain_image[2] %>" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><%= strain_name[2] %></h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+      </div>
+    </div>
+    
+    <!-- row 2-->
+    <br> <br>
+    <div class="row">
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="<%= strain_image[3] %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= strain_name[3] %></h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="<%= strain_image[4] %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= strain_name[4] %></h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm">
+          <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="<%= strain_image[5] %>" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title"><%= strain_name[5] %></h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+        </div>
+      </div>
+
+  </div>
+
+
+<%- include('includes/footer.ejs') %>

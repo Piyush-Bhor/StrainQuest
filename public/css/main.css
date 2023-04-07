@@ -1,0 +1,12 @@
+
+/* header.ejs */
+h1 {
+    text-align: center;
+}
+
+/* home.ejs */
+.main-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    gap: 10px;
+}
