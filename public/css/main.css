@@ -6,12 +6,17 @@
 }
 
 @font-face {
-    font-family: Roboto;
-    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+    font-family: Poppins-bold;
+    src: url(../fonts/Poppins/Poppins-Medium.ttf);
+}
+
+@font-face {
+    font-family: Poppins;
+    src: url(../fonts/Poppins/Poppins-Regular.ttf);
 }
 
 .body-wrapper {
-    font-family: Roboto;
+    font-family: Poppins;
 }
 
 body h1 {
@@ -26,18 +31,15 @@ body h1 {
     gap: 10px;
 }
 
-.strain_tried {
-    text-align: center;
+.btn-primary {
+    background-color:#fccb06 !important;
+    border: none !important;
+    color: black !important;
 }
 
-#strain_tried {
-    background-color: #8CC7A1;
-    border: none;
-    color: black;
+.btn-primary:hover {
+    background-color:#e7be1bfd !important;
+    border: none !important;
+    color: black !important;
 }
 
-#strain_tried:hover {
-    background-color: #8CC7A1;
-    border: solid black;
-    color: black;
-}
