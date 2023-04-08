@@ -24,6 +24,16 @@ body h1 {
     font-family: Luckiest_Guy;
 }
 
+.btn {
+    background-color:#fccb06 !important;
+    border: none !important;
+    color: black !important;
+}
+
+.btn:hover {
+    background-color:#e7be1bfd !important;
+}
+
 /* home.ejs */
 .main-wrapper {
     display: grid;
@@ -39,7 +49,5 @@ body h1 {
 
 .btn-primary:hover {
     background-color:#e7be1bfd !important;
-    border: none !important;
-    color: black !important;
 }
 
