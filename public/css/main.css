@@ -1,7 +1,35 @@
-
 /* header.ejs */
-h1 {
+
+@font-face {
+    font-family: Luckiest_Guy;
+    src: url(../fonts/Luckiest_Guy/LuckiestGuy-Regular.ttf);
+}
+
+@font-face {
+    font-family: Roboto;
+    src: url(../fonts/Roboto/Roboto-Regular.ttf);
+}
+
+.body-wrapper {
+    font-family: Roboto;
+}
+
+body h1 {
     text-align: center;
+    font-family: Luckiest_Guy;
+}
+
+#nav {
+    background-color: #70A9A1;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+}
+
+nav a:hover {
+    color: #3A2D32;
 }
 
 /* home.ejs */
