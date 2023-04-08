@@ -19,19 +19,6 @@ body h1 {
     font-family: Luckiest_Guy;
 }
 
-#nav {
-    background-color: #70A9A1;
-    padding: 10px;
-}
-
-nav a {
-    color: white;
-}
-
-nav a:hover {
-    color: #3A2D32;
-}
-
 /* home.ejs */
 .main-wrapper {
     display: grid;
@@ -41,4 +28,16 @@ nav a:hover {
 
 .strain_tried {
     text-align: center;
+}
+
+#strain_tried {
+    background-color: #8CC7A1;
+    border: none;
+    color: black;
+}
+
+#strain_tried:hover {
+    background-color: #8CC7A1;
+    border: solid black;
+    color: black;
 }
