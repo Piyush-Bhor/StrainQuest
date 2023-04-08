@@ -67,7 +67,7 @@ app.get('/',(req,res)=>{
 
 /* When API call limit exceeds - REMOVE DURING PRODUCTION*/
 app.get('/', (req,res) => {
-    let strain_effect_list = ["happy", "energetic", "sleepy", "hungry", "uplifted"];
+    let strain_effect_list = ["happy, euphoric, sleepy, relaxed", "energetic", "sleepy", "hungry", "uplifted"];
     let strain_name_list = ["Purple Kush", "Pineapple Express", "Mad Mango", "OG Kush", "Golden Goat"];
     let strain_image_list = ["","","","",""];
     let strain_thc_list = ["10","20","30","40","50"];
