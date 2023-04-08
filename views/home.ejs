@@ -9,13 +9,15 @@
               <h5 class="card-title"><%= strain_name[0] %></h5>
               <p class="card-text"><%= strain_effects[0] %>
                 <ul class="list-group">
-                    <li class="list-group-item">THC: <%= strain_thc %>%</li>
-                    <li class="list-group-item">CBD: <%= strain_cbd %>%</li>
-                    <li class="list-group-item">Type: <%= strain_type %></li>
-                    <li class="list-group-item">Effects: <%= strain_effects %></li>
+                    <li class="list-group-item">Type: <%= strain_type[0] %></li>
+                    <li class="list-group-item">THC: <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <%= strain_effects[0] %></li>
                   </ul>
             </p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="strain_tried">
+                <a href="#" id="strain_tried" class="btn btn-primary"> Tried </a>
+            </div>
             </div>
           </div>
       </div>

@@ -31,6 +31,7 @@ function generate_random_number(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+/*
 app.get('/',(req,res)=>{
     const CannabisAPI = require('./cannabis_random');
     const async_random = async () => {
@@ -62,7 +63,29 @@ app.get('/',(req,res)=>{
     }
     async_random();
 });
+*/
 
+/* When API call limit exceeds - REMOVE DURING PRODUCTION*/
+app.get('/', (req,res) => {
+    let strain_effect_list = ["happy", "energetic", "sleepy", "hungry", "uplifted"];
+    let strain_name_list = ["Purple Kush", "Pineapple Express", "Mad Mango", "OG Kush", "Golden Goat"];
+    let strain_image_list = ["","","","",""];
+    let strain_thc_list = ["10","20","30","40","50"];
+    let strain_cbd_list = ["10","20","30","40","50"];
+    let strain_type_list = ["indica","indica","indica","sativa","hybrid"];
+
+    var pageData = {
+        strain_image : strain_image_list,
+        strain_name : strain_name_list,
+        strain_effects : strain_effect_list,
+        strain_thc : strain_thc_list,
+        strain_cbd : strain_cbd_list,
+        strain_type : strain_type_list
+    }   
+    res.render('home',pageData);
+});
+
+/*
 // search strain
 const Cannabis_Search_API = require('./cannabis_search');
 const async_search = async () => {
@@ -70,7 +93,7 @@ const async_search = async () => {
     console.log(response.data[0].strain); // To get only the strain name
 }
 async_search()
-
+*/
 
 
 app.listen(8080);

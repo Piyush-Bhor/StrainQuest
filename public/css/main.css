@@ -10,3 +10,7 @@ h1 {
     grid-template-columns: repeat(5,1fr);
     gap: 10px;
 }
+
+.strain_tried {
+    text-align: center;
+}
