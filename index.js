@@ -85,15 +85,21 @@ app.get('/', (req,res) => {
     res.render('home',pageData);
 });
 
-/*
+
 // search strain
-const Cannabis_Search_API = require('./cannabis_search');
-const async_search = async () => {
-    const response = await Cannabis_Search_API.search_strain("purple kush");
+app.get('/search',(req,res) => {
+    const Cannabis_Search_API = require('./cannabis_search');
+    const async_search = async () => {
+    const response = await Cannabis_Search_API.search_strain(req.query.query);
     console.log(response.data[0].strain); // To get only the strain name
-}
-async_search()
-*/
+
+    var pageData = {
+        search_result : response.data[0].strain
+    }
+    res.render('search_results',pageData);
+    }
+    async_search();
+});
 
 
 app.listen(8080);
