@@ -23,10 +23,8 @@ con.on('open', ()=> {
 // routes
 
 // generate random strains
-
 const min = 0;
 const max = 70;
-
 function generate_random_number(min, max) {
     return Math.random() * (max - min) + min;
 }
@@ -87,6 +85,8 @@ app.get('/', (req,res) => {
 
 
 // search strain
+
+/*
 app.get('/search',(req,res) => {
     const Cannabis_Search_API = require('./cannabis_search');
     const async_search = async () => {
@@ -110,7 +110,40 @@ app.get('/search',(req,res) => {
     }
     async_search();
 });
+*/
 
+/* When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION*/
+app.get('/search',(req,res) => {
+    const Cannabis_Search_API = require('./cannabis_search');
+    const async_search = async () => {
+        const response = await Cannabis_Search_API.search_strain(req.query.query);
+        strain_name = "Purple Kush";
+        strain_image = "https://images.unsplash.com/photo-1603909223429-69bb7101f420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80";
+        strain_effects= "happy, euphoric, sleepy, relaxed";
+        strain_thc = "10";
+        strain_cbd = "20";
+        strain_type = "indica";
+
+        var pageData = {
+            strain_image : strain_image,
+            strain_name : strain_name,
+            strain_effects : strain_effects,
+            strain_thc : strain_thc,
+            strain_cbd : strain_cbd,
+            strain_type : strain_type
+        }
+        res.render('search_results',pageData);
+    }
+    async_search();
+});
+
+app.get('/signup',(req,res) => {
+    res.render('signup_form');
+});
+
+app.get('/login',(req,res) => {
+    res.render('login_form');
+});
 
 app.listen(8080);
 console.log('Server running at http://localhost:8080');

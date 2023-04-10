@@ -1,0 +1,29 @@
+<%- include('includes/header.ejs') %>
+
+<div class="container-fluid">
+  <div class="row align-items-center justify-content-center vh-100">
+    <div class="col-md-6 col-lg-5">
+      <form class="form-signup bg-white p-5">
+        <h1 class="h3 mb-4 font-weight-normal">Sign up</h1>
+        <div class="form-group">
+          <label for="inputEmail">Email address</label>
+          <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" required autofocus>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block mt-4" type="submit">Sign up</button>
+        <div class="mt-4 text-center">
+          <span>Already have an account?</span>
+          <a href="/login" class="ml-2 font-weight-bold">Login</a>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-6 col-lg-7 d-none d-md-block">
+      <img src="https://images.unsplash.com/photo-1612995923001-27d03779d023?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" alt="Signup Image" class="img-fluid h-100">
+    </div>
+  </div>
+</div>
+
+<%- include('includes/footer.ejs') %>
