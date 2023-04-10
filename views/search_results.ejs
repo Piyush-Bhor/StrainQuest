@@ -1,6 +1,26 @@
 <%- include('includes/header.ejs') %>
 
-    Hello World  <%= search_result %>
+<div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src= "<%= strain_image %>" alt="Card image cap">
+            <div class="card-body">
+              <div style="text-align: center;">  <h5 class="card-title"><%= strain_name %></h5> </div>
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">Type: <%= strain_type %></li>
+                    <li class="list-group-item">THC: <%= strain_thc %>%</li>
+                    <li class="list-group-item">CBD: <%= strain_cbd %>%</li>
+                    <li class="list-group-item">Effects: <%= strain_effects %></li>
+                  </ul>
+                </p>
+              <div style="text-align: center;"> 
+                <a href="#" class="btn btn-primary"> Collected </a> </div>
+            </div>
+          </div>
+      </div>
+  </div>
 
 
 <%- include('includes/footer.ejs') %>

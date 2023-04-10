@@ -11,7 +11,7 @@ module.exports = {
             'X-RapidAPI-Host': 'weed-strain1.p.rapidapi.com'
         },
         params: {
-            search: this.search_strain,
+            search: user_strain,
         }
     })
 }

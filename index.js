@@ -90,13 +90,23 @@ app.get('/', (req,res) => {
 app.get('/search',(req,res) => {
     const Cannabis_Search_API = require('./cannabis_search');
     const async_search = async () => {
-    const response = await Cannabis_Search_API.search_strain(req.query.query);
-    console.log(response.data[0].strain); // To get only the strain name
+        const response = await Cannabis_Search_API.search_strain(req.query.query);
+        strain_name = response.data[0].strain;
+        strain_image = response.data[0].imgThumb;
+        strain_effects= response.data[0].goodEffects;
+        strain_thc = response.data[0].thc;
+        strain_cbd = response.data[0].cbd;
+        strain_type = response.data[0].strainType;
 
-    var pageData = {
-        search_result : response.data[0].strain
-    }
-    res.render('search_results',pageData);
+        var pageData = {
+            strain_image : strain_image,
+            strain_name : strain_name,
+            strain_effects : strain_effects,
+            strain_thc : strain_thc,
+            strain_cbd : strain_cbd,
+            strain_type : strain_type
+        }
+        res.render('search_results',pageData);
     }
     async_search();
 });
