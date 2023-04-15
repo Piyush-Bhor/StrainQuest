@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 require("dotenv").config();
 const mongoose = require('mongoose');
+const session = require('express-session');
 
 app = express();
 
@@ -19,6 +20,19 @@ const con = mongoose.connection
 con.on('open', ()=> {
     console.log("Database Connnected....");
 });
+
+// user model
+const User = mongoose.model('User',{
+    username: String,
+    password: String
+});
+
+// session
+app.use(session({
+    secret: process.env.SECRET,
+    resave: false,
+    saveUninitialized: true
+})); 
 
 // routes
 
@@ -144,6 +158,38 @@ app.get('/signup',(req,res) => {
 app.get('/login',(req,res) => {
     res.render('login_form');
 });
+
+/* login */
+app.get('/loginprocess',(req,res) => {
+    console.log("Login Started");
+    var username = req.query.username;
+    var password = req.query.password;
+    User.findOne({username: username, password: password}).then((user) => {
+        if(user){ 
+            // save in session
+            req.session.username = user.username;
+            req.session.loggedIn = true;
+            res.send('You logged in'); // change this later
+        }
+    }).catch((err) => {
+        res.send(err);
+    });
+}); 
+
+
+// ------- application setup stuff -------
+// do not push to production
+
+app.get('/setup',function(req, res){
+    var userData = {
+        username: 'admin',
+        password: 'admin'
+    }
+    var newUser = new User(userData);
+    newUser.save();
+    res.send('Done');
+});
+
 
 app.listen(8080);
 console.log('Server running at http://localhost:8080');
