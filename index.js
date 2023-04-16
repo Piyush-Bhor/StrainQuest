@@ -27,6 +27,17 @@ const User = mongoose.model('User',{
     password: String
 });
 
+// strain model
+const Strain = mongoose.model('Strain', {
+    user: String,
+    strain_name : String,
+    strain_image : String,
+    strain_type : String,
+    strain_effect : String,
+    thc : Number,
+    cbd : Number
+});
+
 // session
 app.use(session({
     secret: process.env.SECRET,
@@ -161,9 +172,8 @@ app.get('/login',(req,res) => {
 
 /* login */
 app.get('/loginprocess',(req,res) => {
-    console.log("Login Started");
     var username = req.query.username;
-    var password = req.query.password;
+    var password = req.query.password;    
     User.findOne({username: username, password: password}).then((user) => {
         if(user){ 
             // save in session
@@ -176,6 +186,39 @@ app.get('/loginprocess',(req,res) => {
     });
 }); 
 
+/* add strain to collection */
+app.get('/add',(req,res) => {
+    if(req.session.loggedIn) {
+        const Cannabis_Search_API = require('./cannabis_search');
+        const async_add = async () => {
+            const response = await Cannabis_Search_API.search_strain(req.query.strain_name);
+            strain_name = response.data[0].strain;
+            strain_image = response.data[0].imgThumb;
+            strain_effects= response.data[0].goodEffects;
+            strain_thc = response.data[0].thc;
+            strain_cbd = response.data[0].cbd;
+            strain_type = response.data[0].strainType;
+
+            var pageData = {
+                user : req.session.username,
+                strain_image : strain_image,
+                strain_name : strain_name,
+                strain_effects : strain_effects,
+                strain_thc : strain_thc,
+                strain_cbd : strain_cbd,
+                strain_type : strain_type
+            }
+            var new_strain = new Strain(pageData);
+            new_strain.save();
+            res.send(pageData);
+    }
+        async_add();
+    }
+    else {
+        res.redirect('/login');
+    }
+
+});
 
 // ------- application setup stuff -------
 // do not push to production
@@ -189,7 +232,6 @@ app.get('/setup',function(req, res){
     newUser.save();
     res.send('Done');
 });
-
 
 app.listen(8080);
 console.log('Server running at http://localhost:8080');

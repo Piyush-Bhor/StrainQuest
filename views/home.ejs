@@ -2,23 +2,27 @@
 
 <div class="container">
     <div class="row">
+      <form action="/add">
       <div class="col-sm">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
             <div class="card-body">
-              <div style="text-align: center;">  <h5 class="card-title"><%= strain_name[0] %></h5> </div>
+              <div style="text-align: center;"> <h5 class="card-title"> <%= strain_name[0] %></h5> </div>
+              <input type="hidden" name="strain_name" value="<%= strain_name[0] %>">
                 <p>
                 <ul class="list-group">
-                    <li class="list-group-item">Type: <%= strain_type[0] %></li>
-                    <li class="list-group-item">THC: <%= strain_thc[0] %>%</li>
-                    <li class="list-group-item">CBD: <%= strain_cbd[0] %>%</li>
-                    <li class="list-group-item">Effects: <%= strain_effects[0] %></li>
+                    <li class="list-group-item">Type: <p name="strain_type"><%= strain_type[0] %></p></li>
+                    <li class="list-group-item">THC:<p name="thc"></p> <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <p name="cbd"></p><%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <p name="effects"></p><%= strain_effects[0] %></li>
                   </ul>
                 </p>
               <div style="text-align: center;"> 
-                <a href="#" class="btn btn-primary"> Collected </a> </div>
+                <input type="submit" class="btn btn-primary"> </button>
+            </div>
             </div>
           </div>
+        </form>
       </div>
       <div class="col-sm">
         <div class="card" style="width: 18rem;">

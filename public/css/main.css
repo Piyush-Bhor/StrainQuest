@@ -50,3 +50,7 @@ body h1 {
 .btn-primary:hover {
     background-color:#e7be1bfd !important;
 }
+
+.list-group-item p {
+    display: inline;
+}
