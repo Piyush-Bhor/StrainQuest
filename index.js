@@ -33,9 +33,9 @@ const Strain = mongoose.model('Strain', {
     strain_name : String,
     strain_image : String,
     strain_type : String,
-    strain_effect : String,
-    thc : Number,
-    cbd : Number
+    strain_effects : String,
+    strain_thc : String,
+    strain_cbd : String
 });
 
 // session
@@ -153,9 +153,9 @@ app.get('/search',(req,res) => {
             strain_image : strain_image,
             strain_name : strain_name,
             strain_effects : strain_effects,
+            strain_type : strain_type,
             strain_thc : strain_thc,
             strain_cbd : strain_cbd,
-            strain_type : strain_type
         }
         res.render('search_results',pageData);
     }
