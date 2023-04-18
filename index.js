@@ -223,12 +223,11 @@ app.get('/add',(req,res) => {
 /* view collection */
 app.get('/collection',(req,res) => {
     if(req.session.loggedIn) {
-        Strain.find({}).exec(function(err, strains){
+        Strain.find({ user : req.session.username }).exec(function(err, strains){
             var pageData = {
                 strains : strains
             }
-            console.log(pageData);
-            //res.render('my_collection', pageData);
+            res.render('my_collection', pageData);
         });
     }
     else {
