@@ -14,7 +14,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended:false}));
 
 // database connection
-const url = process.env.CONNECTIONSTRING; 
+const url = process.env.CONNECTIONSTRING;
 mongoose.connect(url, {useNewUrlParser:true}) 
 const con = mongoose.connection
 con.on('open', ()=> {
@@ -162,6 +162,7 @@ app.get('/search',(req,res) => {
     async_search();
 });
 
+/* sign up & login forms */
 app.get('/signup',(req,res) => {
     res.render('signup_form');
 });
@@ -170,7 +171,7 @@ app.get('/login',(req,res) => {
     res.render('login_form');
 });
 
-/* login */
+/* login process */
 app.get('/loginprocess',(req,res) => {
     var username = req.query.username;
     var password = req.query.password;    
@@ -186,7 +187,7 @@ app.get('/loginprocess',(req,res) => {
     });
 }); 
 
-/* add strain to collection */
+/* add to collection */
 app.get('/add',(req,res) => {
     if(req.session.loggedIn) {
         const Cannabis_Search_API = require('./cannabis_search');
@@ -210,14 +211,29 @@ app.get('/add',(req,res) => {
             }
             var new_strain = new Strain(pageData);
             new_strain.save();
-            res.send(pageData);
+            res.send(pageData); //remove after testing
     }
         async_add();
     }
     else {
         res.redirect('/login');
     }
+});
 
+/* view collection */
+app.get('/collection',(req,res) => {
+    if(req.session.loggedIn) {
+        Strain.find({}).exec(function(err, strains){
+            var pageData = {
+                strains : strains
+            }
+            console.log(pageData);
+            //res.render('my_collection', pageData);
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
 });
 
 // ------- application setup stuff -------
