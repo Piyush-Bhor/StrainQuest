@@ -1,32 +1,32 @@
+
 <%- include('includes/header.ejs') %>
-
-<div style="display: grid; grid-template-columns: repeat(2,1fr); padding: 10px;"> 
-<%
-        for(strain of strains){
-            %>
-                <div class="card" style="width: 18rem;">
-                    <img class="card-img-top" src= "<%= strain.strain_image %>" alt="Card image cap">
-                    <div class="card-body">
-                      <div style="text-align: center;"> <h5 class="card-title"> <%= strain.strain_name %></h5> </div>
-                      <input type="hidden" name="strain_name" value="<%= strain.strain_name %>">
-                        <p>
-                        <ul class="list-group">
-                            <li class="list-group-item">Type: <p name="strain_type"><%= strain.strain_type %></p></li>
-                            <li class="list-group-item">THC:<p name="thc"></p> <%= strain.strain_thc %></li>
-                            <li class="list-group-item">CBD: <p name="cbd"></p><%= strain.strain_cbd %></li>
-                            <li class="list-group-item">Effects: <p name="effects"></p><%= strain.strain_effects %></li>
-                        </ul>
-                        </p>
-                      <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
-                    </div>
-                  </div>
-            <%
-        }
-
-%>
-
+<div class="container">
+  <div class="row"> 
+    <% for(var i = 0; i < strains.length; i++) { %>
+      <div class="col-sm-4 col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="<%= strains[i].strain_image %>" alt="Card image cap">
+          <div class="card-body">
+            <div style="text-align: center;"> 
+              <h5 class="card-title"><%= strains[i].strain_name %></h5> 
+            </div>
+            <input type="hidden" name="strain_name" value="<%= strains[i].strain_name %>">
+            <p>
+              <ul class="list-group">
+                <li class="list-group-item">Type: <p name="strain_type"><%= strains[i].strain_type %></p></li>
+                <li class="list-group-item">THC: <p name="thc"><%= strains[i].strain_thc %></p></li>
+                <li class="list-group-item">CBD: <p name="cbd"><%= strains[i].strain_cbd %></p></li>
+                <li class="list-group-item">Effects: <p name="effects"><%= strains[i].strain_effects %></p></li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+      <% if((i + 1) % 3 === 0) { %>
+        </div>
+        <br> <div class="row">
+      <% } %>
+    <% } %>
+  </div>
 </div>
-
-
-
 <%- include('includes/footer.ejs') %>
