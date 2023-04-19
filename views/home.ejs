@@ -2,9 +2,7 @@
 
 <div class="container">
     <div class="row">
-      
-      
-      <div class="col-sm">
+      <div class="col-sm col-md-4">
         <form action="/add">
         <div class="card" style="width: 18rem;">
             <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
@@ -26,65 +24,118 @@
       </div>
        
 
-      <div class="col-sm">
+      <div class="col-sm col-md-4">
+        <form action="/add">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<%= strain_image[1] %>" alt="Card image cap">
+            <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title"><%= strain_name[1] %></h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <div style="text-align: center;"> <h5 class="card-title"> <%= strain_name[0] %></h5> </div>
+              <input type="hidden" name="strain_name" value="<%= strain_name[0] %>">
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">Type: <p name="strain_type"><%= strain_type[0] %></p></li>
+                    <li class="list-group-item">THC:<p name="thc"></p> <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <p name="cbd"></p><%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <p name="effects"></p><%= strain_effects[0] %></li>
+                </ul>
+                </p>
+              <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
             </div>
           </div>
+        </form>
       </div>
 
 
-      <div class="col-sm">
+      <div class="col-sm col-md-4">
+        <form action="/add">
         <div class="card" style="width: 18rem;">
-            <img class="card-img-top" src="<%= strain_image[2] %>" alt="Card image cap">
+            <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
             <div class="card-body">
-              <h5 class="card-title"><%= strain_name[2] %></h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <div style="text-align: center;"> <h5 class="card-title"> <%= strain_name[0] %></h5> </div>
+              <input type="hidden" name="strain_name" value="<%= strain_name[0] %>">
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">Type: <p name="strain_type"><%= strain_type[0] %></p></li>
+                    <li class="list-group-item">THC:<p name="thc"></p> <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <p name="cbd"></p><%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <p name="effects"></p><%= strain_effects[0] %></li>
+                </ul>
+                </p>
+              <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
             </div>
           </div>
+        </form>
       </div>
     </div>
     
     <!-- row 2-->
-    <br> <br>
+    <br>
     <div class="row">
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="<%= strain_image[3] %>" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"><%= strain_name[3] %></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+      <div class="col-sm col-md-4">
+        <form action="/add">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
+            <div class="card-body">
+              <div style="text-align: center;"> <h5 class="card-title"> <%= strain_name[0] %></h5> </div>
+              <input type="hidden" name="strain_name" value="<%= strain_name[0] %>">
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">Type: <p name="strain_type"><%= strain_type[0] %></p></li>
+                    <li class="list-group-item">THC:<p name="thc"></p> <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <p name="cbd"></p><%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <p name="effects"></p><%= strain_effects[0] %></li>
+                </ul>
+                </p>
+              <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
             </div>
-        </div>
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="<%= strain_image[4] %>" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"><%= strain_name[4] %></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
+          </div>
+        </form>
+      </div>
+       
+
+      <div class="col-sm col-md-4">
+        <form action="/add">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
+            <div class="card-body">
+              <div style="text-align: center;"> <h5 class="card-title"> <%= strain_name[0] %></h5> </div>
+              <input type="hidden" name="strain_name" value="<%= strain_name[0] %>">
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">Type: <p name="strain_type"><%= strain_type[0] %></p></li>
+                    <li class="list-group-item">THC:<p name="thc"></p> <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <p name="cbd"></p><%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <p name="effects"></p><%= strain_effects[0] %></li>
+                </ul>
+                </p>
+              <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
             </div>
-        </div>
-        <div class="col-sm">
-          <div class="card" style="width: 18rem;">
-              <img class="card-img-top" src="<%= strain_image[5] %>" alt="Card image cap">
-              <div class="card-body">
-                <h5 class="card-title"><%= strain_name[5] %></h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-              </div>
-            </div>
-        </div>
+          </div>
+        </form>
       </div>
 
+
+      <div class="col-sm col-md-4">
+        <form action="/add">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src= "<%= strain_image[0] %>" alt="Card image cap">
+            <div class="card-body">
+              <div style="text-align: center;"> <h5 class="card-title"> <%= strain_name[0] %></h5> </div>
+              <input type="hidden" name="strain_name" value="<%= strain_name[0] %>">
+                <p>
+                <ul class="list-group">
+                    <li class="list-group-item">Type: <p name="strain_type"><%= strain_type[0] %></p></li>
+                    <li class="list-group-item">THC:<p name="thc"></p> <%= strain_thc[0] %>%</li>
+                    <li class="list-group-item">CBD: <p name="cbd"></p><%= strain_cbd[0] %>%</li>
+                    <li class="list-group-item">Effects: <p name="effects"></p><%= strain_effects[0] %></li>
+                </ul>
+                </p>
+              <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 
 
