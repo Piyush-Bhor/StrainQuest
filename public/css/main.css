@@ -15,6 +15,12 @@
     src: url(../fonts/Poppins/Poppins-Regular.ttf);
 }
 
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .body-wrapper {
     font-family: Poppins;
 }
@@ -32,6 +38,10 @@ body h1 {
 
 .btn:hover {
     background-color:#e7be1bfd !important;
+}
+
+.navbar-brand {
+    font-family: Luckiest_Guy !important;
 }
 
 /* home.ejs */
@@ -53,4 +63,15 @@ body h1 {
 
 .list-group-item p {
     display: inline;
+}
+
+/* signup_form */
+form h1 {
+    padding: 30px;
+    font-family: Luckiest_Guy !important;
+}
+
+/* footer.ejs */
+footer {
+    margin-top: auto;
 }
