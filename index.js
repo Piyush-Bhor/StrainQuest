@@ -187,6 +187,31 @@ app.get('/loginprocess',(req,res) => {
     });
 }); 
 
+/* signup process */
+app.get('/signup_process', (req,res) => {
+    var username = req.query.username;
+    var password = req.query.password;  
+    User.findOne({username: username}).then((user) => {
+        // check if user exists
+        if(user){ 
+            console.log('User Already Exists');
+            res.redirect('login'); // change this later
+        }
+        // create new user
+        else {
+            var userData = {
+                username: username,
+                password: password
+            }
+            var newUser = new User(userData);
+            newUser.save();
+            res.send('User created');
+        }
+    }).catch((err) => {
+        res.send(err);
+    });
+});
+
 /* add to collection */
 app.get('/add',(req,res) => {
     if(req.session.loggedIn) {
