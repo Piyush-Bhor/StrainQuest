@@ -180,12 +180,20 @@ app.get('/loginprocess',(req,res) => {
             // save in session
             req.session.username = user.username;
             req.session.loggedIn = true;
-            res.send('You logged in'); // change this later
+            res.redirect('/collection');
+            console.log('Login Successful');
         }
     }).catch((err) => {
         res.send(err);
     });
 }); 
+
+/* logout process */
+app.get('/logout',(req,res) => {
+    req.session.username = ''; 
+    req.session.loggedIn = false;
+    res.redirect('/login');
+});
 
 /* signup process */
 app.get('/signup_process', (req,res) => {
