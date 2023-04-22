@@ -205,7 +205,8 @@ app.get('/signup_process', (req,res) => {
             }
             var newUser = new User(userData);
             newUser.save();
-            res.send('User created');
+            console.log('User Created Sucessfully!')
+            res.redirect('/');
         }
     }).catch((err) => {
         res.send(err);
