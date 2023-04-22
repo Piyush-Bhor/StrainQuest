@@ -56,7 +56,7 @@ function generate_random_number(min, max) {
 
 /*
 app.get('/',(req,res)=>{
-    const CannabisAPI = require('./cannabis_random');
+    const CannabisAPI = require('./api/cannabis_random');
     const async_random = async () => {
         let strain_effect_list = [];
         let strain_name_list = [];
@@ -113,7 +113,7 @@ app.get('/', (req,res) => {
 
 /*
 app.get('/search',(req,res) => {
-    const Cannabis_Search_API = require('./cannabis_search');
+    const Cannabis_Search_API = require('./api/cannabis_search');
     const async_search = async () => {
         const response = await Cannabis_Search_API.search_strain(req.query.query);
         strain_name = response.data[0].strain;
@@ -139,27 +139,22 @@ app.get('/search',(req,res) => {
 
 /* When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION*/
 app.get('/search',(req,res) => {
-    const Cannabis_Search_API = require('./cannabis_search');
-    const async_search = async () => {
-        const response = await Cannabis_Search_API.search_strain(req.query.query);
-        strain_name = "Purple Kush";
-        strain_image = "https://images.unsplash.com/photo-1603909223429-69bb7101f420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80";
-        strain_effects= "happy, euphoric, sleepy, relaxed";
-        strain_thc = "10";
-        strain_cbd = "20";
-        strain_type = "indica";
+    strain_name = "Purple Kush";
+    strain_image = "https://images.unsplash.com/photo-1603909223429-69bb7101f420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80";
+    strain_effects= "happy, euphoric, sleepy, relaxed";
+    strain_thc = "10";
+    strain_cbd = "20";
+    strain_type = "indica";
 
-        var pageData = {
-            strain_image : strain_image,
-            strain_name : strain_name,
-            strain_effects : strain_effects,
-            strain_type : strain_type,
-            strain_thc : strain_thc,
-            strain_cbd : strain_cbd,
-        }
-        res.render('search_results',pageData);
+    var pageData = {
+        strain_image : strain_image,
+        strain_name : strain_name,
+        strain_effects : strain_effects,
+        strain_type : strain_type,
+        strain_thc : strain_thc,
+        strain_cbd : strain_cbd,
     }
-    async_search();
+    res.render('search_results',pageData);
 });
 
 /* sign up & login forms */
@@ -224,7 +219,7 @@ app.get('/signup_process', (req,res) => {
 /* add to collection */
 app.get('/add',(req,res) => {
     if(req.session.loggedIn) {
-        const Cannabis_Search_API = require('./cannabis_search');
+        const Cannabis_Search_API = require('./api/cannabis_search');
         const async_add = async () => {
             const response = await Cannabis_Search_API.search_strain(req.query.strain_name);
             strain_name = response.data[0].strain;
