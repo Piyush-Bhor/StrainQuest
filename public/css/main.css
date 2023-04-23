@@ -45,12 +45,6 @@ body h1 {
 }
 
 /* home.ejs */
-.main-wrapper {
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    gap: 10px;
-}
-
 .container .col-sm {
     padding-bottom: 30px;
 }
