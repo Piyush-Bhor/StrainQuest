@@ -177,7 +177,7 @@ app.get('/loginprocess',(req,res) => {
             // save in session
             req.session.username = user.username;
             req.session.loggedIn = true;
-            res.redirect('/collection');
+            res.redirect('/');
             console.log('Login Successful');
         }
     }).catch((err) => {
@@ -199,8 +199,8 @@ app.get('/signup_process', (req,res) => {
     User.findOne({username: username}).then((user) => {
         // check if user exists
         if(user){ 
+            res.redirect('/signup');
             console.log('User Already Exists');
-            res.redirect('login'); // change this later
         }
         // create new user
         else {
@@ -271,7 +271,7 @@ app.get('/collection',(req,res) => {
 
 app.get('/setup',function(req, res){
     var userData = {
-        username: 'admin',
+        username: 'admin@gmail.com',
         password: 'admin'
     }
     var newUser = new User(userData);
