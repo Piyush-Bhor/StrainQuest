@@ -17,9 +17,11 @@ app.use(express.urlencoded({extended:false}));
 const url = process.env.CONNECTIONSTRING;
 mongoose.connect(url, {useNewUrlParser:true}) 
 const con = mongoose.connection
+/*
 con.on('open', ()=> {
     console.log("Database Connnected....");
 });
+*/
 
 // user model
 const User = mongoose.model('User',{
@@ -277,5 +279,4 @@ app.get('/setup',function(req, res){
     res.send('Done');
 });
 
-app.listen(8080);
-console.log('Server running at http://localhost:8080');
+module.exports = app;

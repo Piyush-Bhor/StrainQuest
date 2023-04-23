@@ -2,7 +2,7 @@
   "name": "recepie",
   "version": "1.0.0",
   "description": "An interactive and engaging cannabis strain collector game built on Node.js. Collect and learn about various strains of cannabis as you build your collection, track your progress, and discover new favorites. With a user-friendly interface and in-depth strain information, this package is perfect for cannabis enthusiasts looking to explore and expand their knowledge of different strains.",
-  "main": "index.js",
+  "main": "start.js",
   "scripts": {
     "test": "jest"
   },
