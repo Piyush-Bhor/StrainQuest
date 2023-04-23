@@ -199,8 +199,10 @@ app.get('/signup_process', (req,res) => {
     User.findOne({username: username}).then((user) => {
         // check if user exists
         if(user){ 
-            res.redirect('/signup');
-            console.log('User Already Exists');
+            var pageData = {
+                error_msg : "User Already Exists"
+            }
+            res.render('signup_form', pageData);
         }
         // create new user
         else {

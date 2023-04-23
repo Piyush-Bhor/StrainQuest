@@ -69,6 +69,10 @@ form h1 {
     font-family: Luckiest_Guy !important;
 }
 
+.alert {
+    text-align: center;
+}
+
 /* footer.ejs */
 footer {
     margin-top: auto;

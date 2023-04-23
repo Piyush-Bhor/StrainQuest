@@ -25,6 +25,16 @@
           <a href="/login" class="ml-2 font-weight-bold">Login</a>
         </div>
       </form>
+      <!-- error message -->
+      <div class="alert alert-danger" role="alert">
+        <%
+        if(typeof(error_msg) != 'undefined'){
+          %>
+            <%= error_msg %>
+          <%
+        }
+        %>
+      </div>
     </div>
     <div class="col-md-6 col-lg-7 d-none d-md-block">
       <img src="https://images.unsplash.com/photo-1612995923001-27d03779d023?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" alt="Signup Image" class="img-fluid h-100">
