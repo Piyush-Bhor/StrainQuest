@@ -177,8 +177,10 @@ app.get('/loginprocess',(req,res) => {
             // save in session
             req.session.username = user.username;
             req.session.loggedIn = true;
-            res.redirect('/');
-            console.log('Login Successful');
+            var pageData = {
+                login_msg : "Login Successful!"
+            }
+            res.render('login_form', pageData);
         }
     }).catch((err) => {
         res.send(err);
@@ -189,7 +191,10 @@ app.get('/loginprocess',(req,res) => {
 app.get('/logout',(req,res) => {
     req.session.username = ''; 
     req.session.loggedIn = false;
-    res.redirect('/login');
+    var pageData = {
+        login_msg : "Logout Successful!"
+    }
+    res.render('login_form', pageData);
 });
 
 /* signup process */

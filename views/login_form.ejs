@@ -28,6 +28,14 @@
         <div class="text-center mt-4">
           <p>Don't have an account? <a href="/signup">Sign up</a></p>
         </div>
+        <!-- login message -->
+          <%
+          if(typeof(login_msg) != 'undefined'){
+            %>
+            <br><br><div class="alert alert-success" role="alert"> <%= login_msg %> </div>  
+            <%
+          }
+          %>
       </div>
     </div>
   </div>
