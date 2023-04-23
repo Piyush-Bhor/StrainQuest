@@ -51,6 +51,10 @@ body h1 {
     gap: 10px;
 }
 
+.container .col-sm {
+    padding-bottom: 30px;
+}
+
 .btn-primary {
     background-color:#fccb06 !important;
     border: none !important;
