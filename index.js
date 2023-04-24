@@ -249,7 +249,7 @@ app.get('/add',(req,res) => {
             }
             var new_strain = new Strain(pageData);
             new_strain.save();
-            res.send(pageData); //remove after testing
+            res.render('strain_collected',pageData);
     }
         async_add();
     }
