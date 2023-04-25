@@ -17,11 +17,6 @@ app.use(express.urlencoded({extended:false}));
 const url = process.env.CONNECTIONSTRING;
 mongoose.connect(url, {useNewUrlParser:true}) 
 const con = mongoose.connection
-/*
-con.on('open', ()=> {
-    console.log("Database Connnected....");
-});
-*/
 
 // user model
 const User = mongoose.model('User',{
@@ -56,7 +51,6 @@ function generate_random_number(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-/*
 app.get('/',(req,res)=>{
     const CannabisAPI = require('./api/cannabis_random');
     const async_random = async () => {
@@ -88,9 +82,9 @@ app.get('/',(req,res)=>{
     }
     async_random();
 });
-*/
 
-/* When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION*/
+/* 
+// When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
 app.get('/', (req,res) => {
     let strain_effect_list = ["happy, euphoric, sleepy, relaxed", "energetic", "sleepy", "hungry", "uplifted"];
     let strain_name_list = ["Purple Kush", "Pineapple Express", "Mad Mango", "OG Kush", "Golden Goat"];
@@ -109,11 +103,9 @@ app.get('/', (req,res) => {
     }   
     res.render('home',pageData);
 });
-
+*/
 
 // search strain
-
-/*
 app.get('/search',(req,res) => {
     const Cannabis_Search_API = require('./api/cannabis_search');
     const async_search = async () => {
@@ -137,9 +129,9 @@ app.get('/search',(req,res) => {
     }
     async_search();
 });
-*/
 
-/* When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION*/
+/* 
+// When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
 app.get('/search',(req,res) => {
     strain_name = "Purple Kush";
     strain_image = "https://images.unsplash.com/photo-1603909223429-69bb7101f420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80";
@@ -158,6 +150,7 @@ app.get('/search',(req,res) => {
     }
     res.render('search_results',pageData);
 });
+*/
 
 /* sign up & login forms */
 app.get('/signup',(req,res) => {
@@ -271,19 +264,6 @@ app.get('/collection',(req,res) => {
     else {
         res.redirect('/login');
     }
-});
-
-// ------- application setup stuff -------
-// do not push to production
-
-app.get('/setup',function(req, res){
-    var userData = {
-        username: 'admin@gmail.com',
-        password: 'admin'
-    }
-    var newUser = new User(userData);
-    newUser.save();
-    res.send('Done');
 });
 
 module.exports = app;
