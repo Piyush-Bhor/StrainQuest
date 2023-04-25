@@ -246,16 +246,17 @@ app.get('/delete_account',(req,res) => {
 /* add to collection */
 app.get('/add',(req,res) => {
     if(req.session.loggedIn) {
+        var strain_name = req.query.strain_name;
         const Cannabis_Search_API = require('./api/cannabis_search');
         const async_add = async () => {
-            const response = await Cannabis_Search_API.search_strain(req.query.strain_name);
+            const response = await Cannabis_Search_API.search_strain(strain_name);
             strain_name = response.data[0].strain;
             strain_image = response.data[0].imgThumb;
             strain_effects= response.data[0].goodEffects;
             strain_thc = response.data[0].thc;
             strain_cbd = response.data[0].cbd;
             strain_type = response.data[0].strainType;
-
+            
             var pageData = {
                 user : req.session.username,
                 strain_image : strain_image,
@@ -263,11 +264,22 @@ app.get('/add',(req,res) => {
                 strain_effects : strain_effects,
                 strain_thc : strain_thc,
                 strain_cbd : strain_cbd,
-                strain_type : strain_type
+                strain_type : strain_type,
             }
-            var new_strain = new Strain(pageData);
-            new_strain.save();
-            res.render('strain_collected',pageData);
+            // check if strain is already added
+            Strain.findOne({strain_name: strain_name}).then((strain) => {
+                if(strain) { 
+                    res.render('strain_collected', pageData);
+                }
+                else {
+                    // add strain to db
+                    var new_strain = new Strain(pageData);
+                    new_strain.save();
+                    res.render('strain_collected',pageData);  
+                }
+            }).catch((err) => {
+                res.send(err);
+            });
     }
         async_add();
     }
