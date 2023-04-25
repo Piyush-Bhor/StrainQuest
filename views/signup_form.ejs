@@ -33,6 +33,14 @@
           <%
         }
         %>
+        <!-- signup message -->
+        <%
+        if(typeof(signup_msg) != 'undefined'){
+          %>
+          <br><br><div class="alert alert-success" role="alert"> <%= signup_msg %> </div>  
+          <%
+        }
+        %>
     </div>
     <div class="col-md-6 col-lg-7 d-none d-md-block">
       <img src="https://images.unsplash.com/photo-1612995923001-27d03779d023?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80" alt="Signup Image" class="img-fluid h-100">

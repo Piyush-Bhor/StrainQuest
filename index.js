@@ -210,8 +210,11 @@ app.get('/signup_process', (req,res) => {
             }
             var newUser = new User(userData);
             newUser.save();
-            console.log('User Created Sucessfully!')
-            res.redirect('/');
+            
+            var pageData = {
+                signup_msg : "User Created Successfully!"
+            }
+            res.render('signup_form', pageData);
         }
     }).catch((err) => {
         res.send(err);
@@ -224,6 +227,7 @@ app.get('/delete_account',(req,res) => {
         var username = req.session.username;
         User.findOneAndDelete({username:username}).exec(function(err, user){
             if(user){
+                //clear session cookies
                 req.session.username = ''; 
                 req.session.loggedIn = false;
                 message = "Account Deleted Successfully!";
