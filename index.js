@@ -83,7 +83,7 @@ app.get('/',(req,res)=>{
     async_random();
 });
 
-/* 
+/*
 // When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
 app.get('/', (req,res) => {
     let strain_effect_list = ["happy, euphoric, sleepy, relaxed", "energetic", "sleepy", "hungry", "uplifted"];
@@ -109,7 +109,7 @@ app.get('/', (req,res) => {
 app.get('/search',(req,res) => {
     const Cannabis_Search_API = require('./api/cannabis_search');
     const async_search = async () => {
-        const response = await Cannabis_Search_API.search_strain(req.query.query);
+        const response = await Cannabis_Search_API.search_strain(req.query.search);
         strain_name = response.data[0].strain;
         strain_image = response.data[0].imgThumb;
         strain_effects= response.data[0].goodEffects;
