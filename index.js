@@ -83,8 +83,8 @@ app.get('/',(req,res)=>{
     async_random();
 });
 
-/*
 // When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
+/*
 app.get('/', (req,res) => {
     let strain_effect_list = ["happy, euphoric, sleepy, relaxed", "energetic", "sleepy", "hungry", "uplifted"];
     let strain_name_list = ["Purple Kush", "Pineapple Express", "Mad Mango", "OG Kush", "Golden Goat"];
@@ -130,8 +130,8 @@ app.get('/search',(req,res) => {
     async_search();
 });
 
-/* 
 // When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
+/* 
 app.get('/search',(req,res) => {
     strain_name = "Purple Kush";
     strain_image = "https://images.unsplash.com/photo-1603909223429-69bb7101f420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80";
