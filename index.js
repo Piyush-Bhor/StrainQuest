@@ -266,4 +266,26 @@ app.get('/collection',(req,res) => {
     }
 });
 
+/* delete strain */
+app.get('/delete',(req,res) => {
+    if(req.session.loggedIn) {
+        var strain_name = req.query.strain_name;
+        Strain.findOneAndDelete({strain_name:strain_name}).exec(function(err, strain){
+            if(strain){
+                Strain.find({ user : req.session.username }).exec(function(err, strains){
+                    message = "Strain deleted successfully!";
+                    var pageData = {
+                        strains : strains,
+                        message: message
+                    }
+                    res.render('my_collection', pageData);
+                });
+            }
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
 module.exports = app;
