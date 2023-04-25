@@ -218,6 +218,27 @@ app.get('/signup_process', (req,res) => {
     });
 });
 
+/* delete account */
+app.get('/delete_account',(req,res) => {
+    if(req.session.loggedIn) {
+        var username = req.session.username;
+        User.findOneAndDelete({username:username}).exec(function(err, user){
+            if(user){
+                req.session.username = ''; 
+                req.session.loggedIn = false;
+                message = "Account Deleted Successfully!";
+                var pageData = {
+                    login_msg : message
+                }
+                res.render('login_form', pageData);
+            }
+        });
+    }
+    else {
+        res.redirect('/login');
+    }
+});
+
 /* add to collection */
 app.get('/add',(req,res) => {
     if(req.session.loggedIn) {
