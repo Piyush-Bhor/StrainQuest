@@ -7,7 +7,7 @@ module.exports = {
         method:"GET",
         url : BASE_URL,
         headers: {
-            'X-RapidAPI-Key': '97332acbffmsh8a6ccd361fed272p16e3b9jsn01f04ac5f70e',
+            'X-RapidAPI-Key': process.env.APIKEY,
             'X-RapidAPI-Host': 'weed-strain1.p.rapidapi.com'
         },
         params: {
