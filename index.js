@@ -117,7 +117,6 @@ app.get('/', (req,res) => {
         strain_thc : strain_thc_list,
         strain_cbd : strain_cbd_list,
         strain_type : strain_type_list,
-        loggedIn : loggedIn
     }   
     res.render('home',pageData);
     console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') // req.oidc.isAuthenticated is provided from the auth router
