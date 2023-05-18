@@ -233,11 +233,11 @@ Some of the websites that helped me create this project.
 [contributors-url]: https://github.com/Piyush-Bhor/StrainQuest/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/Piyush-Bhor/StrainQuest.svg?style=for-the-badge
 [forks-url]: https://github.com/Piyush-Bhor/StrainQuest/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Piyush-Bhor/StrainQuest.svg?style=for-the-badge
 [stars-url]: https://github.com/Piyush-Bhor/StrainQuest/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Piyush-Bhor/StrainQuest.svg?style=for-the-badge
 [issues-url]: https://github.com/Piyush-Bhor/StrainQuest/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Piyush-Bhor/StrainQuest.svg?style=for-the-badge
 [license-url]: https://github.com/Piyush-Bhor/StrainQuest/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/piyush-bhor-bb7394265/
@@ -246,3 +246,4 @@ Some of the websites that helped me create this project.
 [Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
 [JQuery-url]: https://jquery.com
+[product-screenshot]: public/images/main.png
