@@ -42,10 +42,10 @@ The app generates a wide variety of cannabis strains for users to try, with deta
   <p align="center">
     Welcome to StrainQuest, the app that takes your cannabis journey to a whole new level of fun and exploration. Discover, collect, and enjoy an incredible variety of strains tailored just for you!
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Piyush-Bhor/StrainQuest"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/othneildrew/Best-README-Template">View Demo</a>
+    <a href="https://github.com/Piyush-Bhor/StrainQuest">View Demo</a>
     ·
     <a href="https://github.com/Piyush-Bhor/StrainQuest/issues">Report Bug</a>
     ·
@@ -101,11 +101,11 @@ Of course, this project is still ongoing and there are more features that will b
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-- [![Ejs][Ejs.com]][Ejs-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![JQuery][JQuery.com]][JQuery-url]
-- [![Node][Node.js]][Node-url]
-- [![MongoDB][MongoDB.com]][MongoDB-url]
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+- ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -118,7 +118,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+NPM is required to install dependencies for the project.
 
 - npm
   ```sh
@@ -127,7 +127,7 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+The following steps will help you get started.
 
 1. Get a free Strain API Key from Rapid Api: [Rapid API](https://rapidapi.com/raygorodskij/api/Strain/)
 2. Create a free account on Auth0 and get Auth0 keys: [Auth0](https://auth0.com/)
@@ -142,7 +142,7 @@ _Below is an example of how you can instruct your audience on installing and set
    ```
 6. Create a .env file with the following data:
    ```
-   CONNECTIONSTRING="Your mongodb connection string"
+    CONNECTIONSTRING="Your mongodb connection string"
     SECRET="A randomly string"
     APIKEY="Your API key from Strain API"
     AUTH0_CLIENT_ID="Your AuthO Client ID"
@@ -208,7 +208,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 Piyush Bhor - [@LinkedIn](https://www.linkedin.com/in/piyush-bhor-bb7394265/) - piyushbhor22@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/Piyush-Bhor/StrainQuest](https://github.com/Piyush-Bhor/StrainQuest)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
