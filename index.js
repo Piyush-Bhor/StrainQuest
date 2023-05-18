@@ -32,12 +32,6 @@ const url = process.env.CONNECTIONSTRING;
 mongoose.connect(url, {useNewUrlParser:true}) 
 const con = mongoose.connection
 
-// user model
-const User = mongoose.model('User',{
-    username: String,
-    password: String
-});
-
 // strain model
 const Strain = mongoose.model('Strain', {
     user: String,
@@ -65,7 +59,6 @@ function generate_random_number(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-/*
 app.get('/',(req,res)=>{
     const CannabisAPI = require('./api/cannabis_random');
     const async_random = async () => {
@@ -98,10 +91,9 @@ app.get('/',(req,res)=>{
     }
     async_random();
 });
-*/
 
 // When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
-
+/*
 app.get('/', (req,res) => {
     let strain_effect_list = ["happy, euphoric, sleepy, relaxed", "energetic", "sleepy", "hungry", "uplifted"];
     let strain_name_list = ["Purple Kush", "Pineapple Express", "Mad Mango", "OG Kush", "Golden Goat"];
@@ -119,8 +111,10 @@ app.get('/', (req,res) => {
         strain_type : strain_type_list,
     }   
     res.render('home',pageData);
-    console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') // req.oidc.isAuthenticated is provided from the auth router
+    console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out'); // req.oidc.isAuthenticated is provided from the auth router
+    console.log(req.oidc.user.name);
 });
+*/
 
 // search strain
 app.get('/search',(req,res) => {
@@ -171,7 +165,7 @@ app.get('/search',(req,res) => {
 
 /* add to collection */
 app.get('/add',(req,res) => {
-    if(req.session.loggedIn) {
+    if(req.oidc.isAuthenticated()) {
         var strain_name = req.query.strain_name;
         const Cannabis_Search_API = require('./api/cannabis_search');
         const async_add = async () => {
@@ -184,7 +178,7 @@ app.get('/add',(req,res) => {
             strain_type = response.data[0].strainType;
             
             var pageData = {
-                user : req.session.username,
+                user : req.oidc.user.name,
                 strain_image : strain_image,
                 strain_name : strain_name,
                 strain_effects : strain_effects,
@@ -216,8 +210,8 @@ app.get('/add',(req,res) => {
 
 /* view collection */
 app.get('/collection',(req,res) => {
-    if(req.session.loggedIn) {
-        Strain.find({ user : req.session.username }).exec(function(err, strains){
+    if(req.oidc.isAuthenticated()) {
+        Strain.find({ user : req.oidc.user.name }).exec(function(err, strains){
             var pageData = {
                 strains : strains
             }
@@ -231,11 +225,11 @@ app.get('/collection',(req,res) => {
 
 /* delete strain */
 app.get('/delete',(req,res) => {
-    if(req.session.loggedIn) {
+    if(req.oidc.isAuthenticated()) {
         var strain_name = req.query.strain_name;
         Strain.findOneAndDelete({strain_name:strain_name}).exec(function(err, strain){
             if(strain){
-                Strain.find({ user : req.session.username }).exec(function(err, strains){
+                Strain.find({ user : req.oidc.user.name }).exec(function(err, strains){
                     message = "Strain deleted successfully!";
                     var pageData = {
                         strains : strains,
