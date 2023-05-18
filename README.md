@@ -83,7 +83,7 @@ The app generates a wide variety of cannabis strains for users to try, with deta
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://github.com/Piyush-Bhor/StrainQuest/blob/master/public/images/main.png?raw=true)
+![Demo Image](https://github.com/Piyush-Bhor/StrainQuest/blob/master/public/images/main.png?raw=true)
 
 StrainQuest is a fun game, that suggets you new and random cannabis strains to discover and try. You can collect these strain, search for the ones you have already tried and add them to your collection. It's a pokedex for weed!
 
