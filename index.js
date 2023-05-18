@@ -4,14 +4,28 @@ const path = require('path');
 require("dotenv").config();
 const mongoose = require('mongoose');
 const session = require('express-session');
+const { auth, requiresAuth } = require('express-openid-connect');
 
-app = express();
+const app = express();
 
 // paths, ejs, and url setup
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended:false}));
+app.use(express.json());
+
+// oauth
+const config = {
+    issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
+    baseURL: process.env.BASE_URL,
+    clientID: process.env.AUTH0_CLIENT_ID,
+    secret: process.env.SECRET,
+    authRequired: false,
+    auth0Logout: true,
+};
+
+app.use(auth(config));
 
 // database connection
 const url = process.env.CONNECTIONSTRING;
@@ -51,6 +65,7 @@ function generate_random_number(min, max) {
     return Math.random() * (max - min) + min;
 }
 
+/*
 app.get('/',(req,res)=>{
     const CannabisAPI = require('./api/cannabis_random');
     const async_random = async () => {
@@ -77,14 +92,16 @@ app.get('/',(req,res)=>{
             strain_thc : strain_thc_list,
             strain_cbd : strain_cbd_list,
             strain_type : strain_type_list
-        }   
+        }
         res.render('home',pageData);
+        console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') // req.oidc.isAuthenticated is provided from the auth router
     }
     async_random();
 });
+*/
 
 // When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
-/*
+
 app.get('/', (req,res) => {
     let strain_effect_list = ["happy, euphoric, sleepy, relaxed", "energetic", "sleepy", "hungry", "uplifted"];
     let strain_name_list = ["Purple Kush", "Pineapple Express", "Mad Mango", "OG Kush", "Golden Goat"];
@@ -99,11 +116,12 @@ app.get('/', (req,res) => {
         strain_effects : strain_effect_list,
         strain_thc : strain_thc_list,
         strain_cbd : strain_cbd_list,
-        strain_type : strain_type_list
+        strain_type : strain_type_list,
+        loggedIn : loggedIn
     }   
     res.render('home',pageData);
+    console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') // req.oidc.isAuthenticated is provided from the auth router
 });
-*/
 
 // search strain
 app.get('/search',(req,res) => {
@@ -151,97 +169,6 @@ app.get('/search',(req,res) => {
     res.render('search_results',pageData);
 });
 */
-
-/* sign up & login forms */
-app.get('/signup',(req,res) => {
-    res.render('signup_form');
-});
-
-app.get('/login',(req,res) => {
-    res.render('login_form');
-});
-
-/* login process */
-app.get('/loginprocess',(req,res) => {
-    var username = req.query.username;
-    var password = req.query.password;    
-    User.findOne({username: username, password: password}).then((user) => {
-        if(user){ 
-            // save in session
-            req.session.username = user.username;
-            req.session.loggedIn = true;
-            var pageData = {
-                login_msg : "Login Successful!"
-            }
-            res.render('login_form', pageData);
-        }
-    }).catch((err) => {
-        res.send(err);
-    });
-}); 
-
-/* logout process */
-app.get('/logout',(req,res) => {
-    req.session.username = ''; 
-    req.session.loggedIn = false;
-    var pageData = {
-        login_msg : "Logout Successful!"
-    }
-    res.render('login_form', pageData);
-});
-
-/* signup process */
-app.get('/signup_process', (req,res) => {
-    var username = req.query.username;
-    var password = req.query.password;  
-    User.findOne({username: username}).then((user) => {
-        // check if user exists
-        if(user){ 
-            var pageData = {
-                error_msg : "User Already Exists"
-            }
-            res.render('signup_form', pageData);
-        }
-        // create new user
-        else {
-            var userData = {
-                username: username,
-                password: password
-            }
-            var newUser = new User(userData);
-            newUser.save();
-            
-            var pageData = {
-                signup_msg : "User Created Successfully!"
-            }
-            res.render('signup_form', pageData);
-        }
-    }).catch((err) => {
-        res.send(err);
-    });
-});
-
-/* delete account */
-app.get('/delete_account',(req,res) => {
-    if(req.session.loggedIn) {
-        var username = req.session.username;
-        User.findOneAndDelete({username:username}).exec(function(err, user){
-            if(user){
-                //clear session cookies
-                req.session.username = ''; 
-                req.session.loggedIn = false;
-                message = "Account Deleted Successfully!";
-                var pageData = {
-                    login_msg : message
-                }
-                res.render('login_form', pageData);
-            }
-        });
-    }
-    else {
-        res.redirect('/login');
-    }
-});
 
 /* add to collection */
 app.get('/add',(req,res) => {
@@ -323,6 +250,11 @@ app.get('/delete',(req,res) => {
     else {
         res.redirect('/login');
     }
+});
+
+// oauth 
+app.get('/profile', requiresAuth(), (req, res) => {
+    res.send(JSON.stringify(req.oidc.user, null, 2));
 });
 
 module.exports = app;
