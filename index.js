@@ -5,6 +5,7 @@ require("dotenv").config();
 const mongoose = require('mongoose');
 const session = require('express-session');
 const { auth, requiresAuth } = require('express-openid-connect');
+const port = process.env.PORT || 3000
 
 const app = express();
 
@@ -51,5 +52,6 @@ app.get('/profile', requiresAuth(), (req, res) => {
 });
 
 // server
-app.listen(8080);
-console.log('Server running at http://localhost:8080');
+app.listen(port,() => {
+    console.log(`Server running at port ` + port);
+});

@@ -37,7 +37,7 @@ const getRandomStrains = async (req, res) => {
                 strain_type : strain_type_list
             }
             res.render('home',pageData);
-            console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') 
+            //console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') 
         }
         async_random();
 
