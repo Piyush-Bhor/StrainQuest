@@ -5,7 +5,9 @@
   <div class="card  mx-auto" style="width: 18rem;">
     <img class="card-img-top" src= "<%= strain_image %>" alt="Card image cap">
     <div class="card-body">
+      <form action="/add"> 
       <div style="text-align: center;">  <h5 class="card-title"><%= strain_name %></h5> </div>
+      <input type="hidden" name="strain_name" value="<%= strain_name %>">
         <p>
         <ul class="list-group">
             <li class="list-group-item">Type: <%= strain_type %></li>
@@ -14,8 +16,8 @@
             <li class="list-group-item">Effects: <%= strain_effects %></li>
           </ul>
         </p>
-      <div style="text-align: center;"> 
-        <a href="#" class="btn btn-primary"> Collected </a> </div>
+      <div style="text-align: center;"> <input type="submit" class="btn btn-primary" value="Collected"> </button></div>
+    </form>
     </div>
   </div>
 </div>
