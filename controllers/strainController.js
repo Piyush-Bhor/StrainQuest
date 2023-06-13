@@ -1,6 +1,7 @@
 const Strain = require('../models/strainModel');
 
 // Generate Random Strains
+/*
 const getRandomStrains = async (req, res) => {
     try {
         const CannabisAPI = require('../api/cannabis_random');
@@ -57,6 +58,76 @@ const getRandomStrains = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+*/
+
+// Generate Random Strains
+const getRandomStrains = async (req, res) => {
+    try {
+        const CannabisAPI = require('../api/cannabis_random');
+
+        // Generate a random number
+        function generate_random_number(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        let strain_effect_list = [];
+        let strain_name_list = [];
+        let strain_image_list = [];
+        let strain_thc_list = [];
+        let strain_cbd_list = [];
+        let strain_type_list = [];
+
+        const min = 0;
+        const max = 70;
+
+        const maxRetries = 3; // Maximum number of retries
+        let retryCount = 0;
+
+        const makeRequest = async () => {
+            try {
+                const response = await CannabisAPI.get_strain_by_ID(generate_random_number(min, max));
+                strain_name_list.push(response.data[0].strain);
+                strain_image_list.push(response.data[0].imgThumb);
+                strain_effect_list.push(response.data[0].goodEffects);
+                strain_thc_list.push(response.data[0].thc);
+                strain_cbd_list.push(response.data[0].cbd);
+                strain_type_list.push(response.data[0].strainType);
+            } catch (error) {
+                if (error.response && error.response.status === 429) {
+                    if (retryCount < maxRetries) {
+                        // Wait for exponentially increasing time before retrying
+                        const waitTime = Math.pow(2, retryCount) * 1000;
+                        await new Promise((resolve) => setTimeout(resolve, waitTime));
+                        retryCount++;
+                        return makeRequest();
+                    } else {
+                        throw new Error('Maximum number of retries reached.');
+                    }
+                } else {
+                    throw error;
+                }
+            }
+        };
+
+        for (let i = 0; i < 6; i++) {
+            await makeRequest();
+        }
+
+        const pageData = {
+            strain_image: strain_image_list,
+            strain_name: strain_name_list,
+            strain_effects: strain_effect_list,
+            strain_thc: strain_thc_list,
+            strain_cbd: strain_cbd_list,
+            strain_type: strain_type_list
+        };
+
+        res.render('home', pageData);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+};
+
 
 // Random Strain - When API call limit exceeds - ONLY FOR TESTING. REMOVE DURING PRODUCTION
 const getRandomStrainsTest = async (req, res) => {
