@@ -53,5 +53,5 @@ app.get('/profile', requiresAuth(), (req, res) => {
 
 // server
 app.listen(port,() => {
-    console.log(`Server running at port ` + port);
+    console.log('Server running at http://localhost:8080');
 });
