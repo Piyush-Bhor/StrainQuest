@@ -5,6 +5,7 @@ const getRandomStrains = async (req, res) => {
     try {
         const CannabisAPI = require('../api/cannabis_random');
         const async_random = async () => {
+          try {
             let strain_effect_list = [];
             let strain_name_list = [];
             let strain_image_list = [];
@@ -38,6 +39,16 @@ const getRandomStrains = async (req, res) => {
             }
             res.render('home',pageData);
             //console.log(req.oidc.isAuthenticated() ? 'Logged in' : 'Logged out') 
+          }
+          catch (error) {
+            if (error.response && error.response.status === 429) {
+              console.error('Too many requests. Please try again later.');
+            } else {
+              console.error('Request failed:', error.message);
+            }
+            throw error;
+          }
+            
         }
         async_random();
 
